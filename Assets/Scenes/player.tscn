@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bx6lc7xgfja4x"]
+
+[ext_resource type="Texture2D" uid="uid://b3wuyxf4txc0v" path="res://Assets/Sprites/DInoi.png" id="1_6cd4h"]
+[ext_resource type="Script" uid="uid://nw8eg7hjaw5" path="res://Assets/Scenes/Scripts/player_controller.gd" id="1_7dd06"]
+[ext_resource type="Script" uid="uid://dex64ap1ijl1h" path="res://Assets/Scenes/Scripts/player_animator.gd" id="2_38rej"]
+
+[sub_resource type="Animation" id="Animation_7dd06"]
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 24, 24), Rect2(24, 0, 24, 24), Rect2(48, 0, 24, 24), Rect2(72, 0, 24, 24), Rect2(96, 0, 24, 24), Rect2(120, 0, 24, 24), Rect2(144, 0, 24, 24), Rect2(168, 0, 24, 24), Rect2(192, 0, 24, 24), Rect2(216, 0, 24, 24), Rect2(240, 0, 24, 24), Rect2(264, 0, 24, 24), Rect2(288, 0, 24, 24), Rect2(312, 0, 24, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_38rej"]
+resource_name = "move"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 24, 24), Rect2(24, 0, 24, 24), Rect2(48, 0, 24, 24), Rect2(72, 0, 24, 24), Rect2(96, 0, 24, 24), Rect2(120, 0, 24, 24), Rect2(144, 0, 24, 24), Rect2(168, 0, 24, 24), Rect2(192, 0, 24, 24), Rect2(216, 0, 24, 24), Rect2(240, 0, 24, 24), Rect2(264, 0, 24, 24), Rect2(288, 0, 24, 24), Rect2(312, 0, 24, 24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1xgp"]
+_data = {
+&"RESET": SubResource("Animation_7dd06"),
+&"move": SubResource("Animation_38rej")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dd06"]
+radius = 7.0
+height = 20.0
+
+[node name="Player" type="CharacterBody2D" unique_id=649873549]
+script = ExtResource("1_7dd06")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1723393581]
+zoom = Vector2(3, 3)
+
+[node name="PlayerAnimator" type="Node2D" parent="." unique_id=1246125735 node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
+script = ExtResource("2_38rej")
+player_controller = NodePath("..")
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator" unique_id=541056729]
+position = Vector2(15, -19)
+scale = Vector2(0.95454544, 1)
+texture = ExtResource("1_6cd4h")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 24)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator" unique_id=1775827998]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_t1xgp")
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2067542522]
+position = Vector2(15, -19)
+shape = SubResource("CapsuleShape2D_7dd06")
