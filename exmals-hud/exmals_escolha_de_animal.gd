@@ -3,11 +3,11 @@ extends Control
 @onready var retrato: TextureRect = $Retrato
 @onready var botao_sair: Button = $"Botão de Sair"
 @onready var botao_menuMaior: Button = $"Botão de Menu Maior de Animais"
-@onready var botao_classe1: Button = $"Classe 1"
-@onready var botao_classe2: Button = $"Classe 2"
-@onready var botao_classe3: Button = $"Classe 3"
-@onready var botao_classe4: Button = $"Classe 4"
-@onready var botao_classe5: Button = $"Classe 5"
+@onready var botao_Bioma1: Button = $"Bioma 1"
+@onready var botao_Bioma2: Button = $"Bioma 2"
+@onready var botao_Bioma3: Button = $"Bioma 3"
+@onready var botao_Bioma4: Button = $"Bioma 4"
+@onready var botao_Bioma5: Button = $"Bioma 5"
 @onready var botao_localizacao: Button = $"Localização"
 @onready var botao_horario: Button = $"Horário"
 @onready var botao_comidafav: Button = $"Comida Favorita"
@@ -18,12 +18,13 @@ extends Control
 
 
 func _ready() -> void:
+	botao_sair.pressed.connect(_on_sair_pressed)
 	botao_menuMaior.pressed.connect(_on_menuMaior_pressed)
-	botao_classe1.pressed.connect(_on_classe1_pressed)
-	botao_classe2.pressed.connect(_on_classe2_pressed)
-	botao_classe3.pressed.connect(_on_classe3_pressed)
-	botao_classe4.pressed.connect(_on_classe4_pressed)
-	botao_classe5.pressed.connect(_on_classe5_pressed)
+	botao_Bioma1.pressed.connect(_on_Bioma1_pressed)
+	botao_Bioma2.pressed.connect(_on_Bioma2_pressed)
+	botao_Bioma3.pressed.connect(_on_Bioma3_pressed)
+	botao_Bioma4.pressed.connect(_on_Bioma4_pressed)
+	botao_Bioma5.pressed.connect(_on_Bioma5_pressed)
 	botao_localizacao.pressed.connect(_on_localizacao_pressed)
 	botao_horario.pressed.connect(_on_horario_pressed)
 	botao_comidafav.pressed.connect(_on_comidafav_pressed)
@@ -41,25 +42,25 @@ func _on_menuMaior_pressed() -> void:
 	# volta para a seleção de animais (veja as opções abaixo)
 	get_tree().change_scene_to_file("res://menuMaior.tscn")
 
-func _on_classe1_pressed() -> void:
-	# volta para a seleção de animais classe 1 (veja as opções abaixo)
-	get_tree().change_scene_to_file("res://classe1.tscn")
+func _on_Bioma1_pressed() -> void:
+	# volta para a seleção de animais Bioma 1 (veja as opções abaixo)
+	get_tree().change_scene_to_file("res://Bioma1.tscn")
 
-func _on_classe2_pressed() -> void:
-	# volta para a seleção de animais classe 2 (veja as opções abaixo)
-	get_tree().change_scene_to_file("res://classe2.tscn")
+func _on_Bioma2_pressed() -> void:
+	# volta para a seleção de animais Bioma 2 (veja as opções abaixo)
+	get_tree().change_scene_to_file("res://Bioma2.tscn")
 
-func _on_classe3_pressed() -> void:
-	# volta para a seleção de animais classe 3 (veja as opções abaixo)
-	get_tree().change_scene_to_file("res://classe3.tscn")
+func _on_Bioma3_pressed() -> void:
+	# volta para a seleção de animais Bioma 3 (veja as opções abaixo)
+	get_tree().change_scene_to_file("res://Bioma3.tscn")
 
-func _on_classe4_pressed() -> void:
-	# volta para a seleção de animais classe 4 (veja as opções abaixo)
-	get_tree().change_scene_to_file("res://classe4.tscn")
+func _on_Bioma4_pressed() -> void:
+	# volta para a seleção de animais Bioma 4 (veja as opções abaixo)
+	get_tree().change_scene_to_file("res://Bioma4.tscn")
 
-func _on_classe5_pressed() -> void:
-	# volta para a seleção de animais classe 5 (veja as opções abaixo)
-	get_tree().change_scene_to_file("res://classe5.tscn")
+func _on_Bioma5_pressed() -> void:
+	# volta para a seleção de animais Bioma 5 (veja as opções abaixo)
+	get_tree().change_scene_to_file("res://Bioma5.tscn")
 
 func _on_localizacao_pressed() -> void:
 	# volta para a seleção de animais por localização (veja as opções abaixo)
@@ -85,6 +86,6 @@ func _on_fotos_pressed() -> void:
 	# volta para a seleção de animais por fotos (veja as opções abaixo)
 	get_tree().change_scene_to_file("res://fotos.tscn")
 
-func _on_button5_pressed() -> void:
+func _on_ampliar_pressed() -> void:
 	retrato.mostrar_animal()
 	
